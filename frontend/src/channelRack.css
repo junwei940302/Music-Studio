@@ -1,0 +1,195 @@
+.channelRack{
+    position: fixed;
+    width: 100vw;
+    height: fit-content;
+    max-height: 300px;
+    z-index: 10000;
+    top: 75vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.channelRackPanel{
+    position: fixed;
+    width: 96vw;
+    height: fit-content;
+    max-height: 300px;
+    background-color: #1A1A1A;
+    border-radius: 20px;
+    border: 1px solid #D87A33;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 10px 0 #D87A33;
+    justify-content: space-around;
+    transform: translateX(-100vw);
+    transition: transform 0.5s ease-in-out;
+}
+
+.channelRackToggle{
+    position: fixed;
+    z-index: 10001;
+    transform: translateX(-48.8vw);
+    border: 1px solid #D87A33;
+    background-color: #1A1A1A;
+    color: #D87A33;
+    border-radius: 10px;
+    height: 50px;
+    width: 2vw;
+    transition: transform 0.1s ease-in-out, 0.1s ease-in-out, box-shadow color 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.channelRackToggle:hover{
+    box-shadow: 0 0 10px 0 #D87A33;
+    color: white;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+
+.punchPadZone, .rhythmMaker, .bpmController{
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
+    background-color: #1A1A1A;
+    padding: 5px;
+    align-items: center;
+    justify-content: space-around;
+    display: block;
+}
+
+.punchPadZone button{
+    width: 100px;
+    height: 100px;
+    border: 1px solid #D87A33;
+    background-color: #464647;
+    border-radius: 20px;
+    margin: 10px;
+    box-shadow: inset 0 0 40px 0 #D87A33;
+    transition: box-shadow 0.1s ease-in-out;
+    color: #D87A33;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.punchPadZone div{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.rhythmMaker{
+    height: 260px;
+    padding: 5px;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.rhythmRow{
+    margin: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.rhythmRow select{
+    border: 1px solid#D87A33;
+    background-color: #1A1A1A;
+    color: white;
+    appearance: none;
+    padding: 10px;
+    text-align: center;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.btnRack{
+    display: flex;
+    align-items: center;
+}
+
+.rhythmRow input[type="checkbox"]{
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 30px;
+    background-color: #464647;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    border: 1px solid #464647;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.rhythmRow input[type="checkbox"]:checked{
+    box-shadow: inset 0 0 20px 0 #D87A33;
+    border: 1px solid #D87A33;
+    transition: all 0.2s ease-in-out;
+}
+
+.rhythmMaker input[type="checkbox"]:last-child{
+    margin-right: 15px;
+}
+
+.bpmController{
+    width: auto;
+    height: auto;
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    display: grid;
+}
+
+.bpmController input{
+    border: 1px solid #D87A33;
+    background-color: #1A1A1A;
+    color: white;
+    text-align: center;
+    width:100px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.bpmController button{
+    border: 1px solid #D87A33;
+    background-color: #1A1A1A;
+    color: #D87A33;
+    text-align: center;
+    width:103px;
+    height: 30px;
+    border-radius: 10px;
+    transition: box-shadow 0.1s ease-in-out, color 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.bpmController button:hover{
+    box-shadow: 0 0 10px 0 #D87A33;
+    color: white;
+    transition: box-shadow 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+
+@media screen and (max-width: 1300px) {
+    /* Styles for smaller screens */
+    .rhythmMaker{
+        overflow-x: scroll;
+        overflow-y: hidden;
+        box-shadow: inset 0 0 10px 0 #D87A33;
+    }
+
+    .rhythmMaker::-webkit-scrollbar{
+        background-color: #464647;
+        border-bottom-right-radius: 10px;
+        height: 5px;
+    }
+
+    .rhythmMaker::-webkit-scrollbar-thumb{
+        background-color: #D87A33;
+        border-radius: 10px;
+    }
+}

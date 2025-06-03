@@ -1,0 +1,100 @@
+/* About Modal styles */
+#aboutModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s;
+}
+
+#aboutModal .modal-content {
+    background-color: #2A2A2A;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    max-width: 600px;
+    max-height: 60vh;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.3s;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#aboutModal .modal-content::-webkit-scrollbar {
+    display: none;
+}
+
+#aboutModal .modal-content h3 {
+    color: #D87A33;
+}
+
+#aboutModal table {
+    margin-left: 50px;
+    display: flex;
+    width: 100%;
+}
+
+#aboutModal tr {
+    border: 1px solid black;
+    padding: 0;
+}
+
+#aboutModal th {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#aboutModal #firstTh {
+    transition: transform 0.1s ease-in-out;
+}
+
+#aboutModal #firstTh:hover {
+    transform: scale(1.05);
+    transition: transform 0.1s ease-in-out;
+}
+
+#aboutModal tr p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#aboutModal .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+#aboutModal .close:hover,
+#aboutModal .close:focus {
+    color: #D87A33;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#aboutModal h2 {
+    color: #D87A33;
+    margin-top: 0;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes slideIn {
+    from {transform: translateY(-50px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+} 

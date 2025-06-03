@@ -1,0 +1,105 @@
+#audioBrowserModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s;
+}
+
+#audioBrowserFileList{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#audioBrowserFileList::-webkit-scrollbar{
+    display: none;
+}
+
+#audioBrowserModal .modal-content {
+    background-color: #2A2A2A;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    max-width: 600px;
+    max-height: 60vh;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.3s;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#audioBrowserModal .modal-content::-webkit-scrollbar {
+    display: none;
+}
+
+#audioBrowserModal .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+#audioBrowserModal .close:hover,
+#audioBrowserModal .close:focus {
+    color: #D87A33;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#audioBrowserModal h2 {
+    color: #D87A33;
+    margin-top: 0;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+}
+
+#audioBrowserModal table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#audioBrowserModal tbody {
+    overflow-y: scroll;
+}
+
+#audioBrowserModal table td {
+    padding: 8px;
+    border-bottom: 1px solid #444;
+}
+
+#audioBrowserModal table tr:last-child td {
+    border-bottom: none;
+}
+
+#audioBrowserModal table td:first-child {
+    font-weight: bold;
+    color: #D87A33;
+}
+
+#audioBrowserModal table td:nth-child(2) {
+    width: fit-content;
+    justify-content: center;
+    display: flex;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes slideIn {
+    from {transform: translateY(-50px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+} 

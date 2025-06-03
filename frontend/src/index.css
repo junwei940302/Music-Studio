@@ -1,0 +1,517 @@
+.container{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1A1A1A;
+    display: flex;
+    z-index: 2;
+}
+
+.optionBar{
+    position: fixed;
+    width: 98vw;
+    height: 40px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    background-color: #141414;
+    justify-content: space-between;
+    gap: 1vw;
+    z-index: 999;
+    padding: 0 1vw 0 1vw;
+}
+
+.optionBar ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 2vw;
+    padding-left: 0;
+}
+
+.optionBar ul li {
+    position: relative;
+    cursor: pointer;
+}
+
+.optionBar ul li .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #141414;
+    min-width: 180px;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border-radius: 0 0 8px 8px;
+    padding: 0;
+    list-style: none;
+}
+
+.optionBar ul li:hover .dropdown {
+    display: block;
+}
+
+.optionBar ul li p:hover{
+    color: #D87A33;
+}
+
+.dropdown li {
+    padding: 8px;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s, transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.dropdown li:hover {
+    color: #D87A33;
+    transform: translateX(5px);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.dropdown li p{
+    margin: 0;
+    cursor: pointer;
+}
+
+#fileTitle, #serverStatus{
+    background-color: #272728;
+    border-radius: 10px;
+    width: fit-content;
+    height: 26px;
+    padding: 0 1vw 0 1vw;
+    margin: 0;
+    border: none;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.editor{
+    position: fixed;
+    top: 50px;
+    width: 100vw;
+    height: calc(100vh - 50px);
+    justify-content: center;
+    display: flex;
+}
+
+.desk{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 0 10px 0 #D87A33;
+}
+
+.panel{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    background-color: #4A4A4B;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.panel button{
+    border-radius: 10px;
+    background-color: #1A1A1A;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.panel button:hover{
+    background-color: #1A1A1A;
+    color: #D87A33;
+}
+
+.panel input{
+    color: #fff;
+    margin: 0;
+    padding: 9px;
+    font-size: 20px;
+    background-color: #4A4A4B;
+    border: none;
+    width: 100px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.button.focus{
+    background-color: #D87A33;
+    color: white;
+    width: 38px;
+    height: 38px;
+    border: 1px solid white;
+}
+
+.button.focus:hover{
+    background-color: #D87A33;
+    color: white;
+    width: 38px;
+    height: 38px;
+    border: 1px solid white;
+}
+
+.trackZone{
+    position: fixed;
+    width: 90vw;
+    height: 70vh;
+    background-color: #464647;
+    margin-top: 100px;
+    border-radius: 20px;
+    padding: 10px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    box-shadow: 0 0 10px 0 #D87A33;
+}
+
+.trackZone::-webkit-scrollbar{
+    display: none;
+}
+
+.track{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.icon{
+    width: 170px;
+    height: 150px;
+    background-color: gray;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+.icon input[type="text"]{
+    background-color: gray;
+    border: none;
+    color: white;
+    width: 75%;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.icon button{
+    background-color: gray;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    width: 40px;
+    height: 30px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 5px;
+}
+
+.icon button:hover {
+    background-color: #D87A33;
+    transform: scale(1.05);
+}
+
+.icon .deleteBtn {
+    background-color: #8B0000;
+}
+
+.icon .deleteBtn:hover {
+    background-color: #FF0000;
+}
+
+.track.active[data-is-cycle-track="false"] > .icon{
+    background-color: #D87A33;
+}
+
+.track.active[data-is-cycle-track="false"] > .icon input{
+    background-color: #D87A33;
+    box-shadow: none;
+}
+
+.track.active[data-is-cycle-track="true"] > .icon{
+    background-color: #2A5A8B;
+}
+
+.track.active[data-is-cycle-track="true"] > .icon input{
+    background-color: #2A5A8B;
+    box-shadow: none;
+}
+
+.wavData{
+    width: calc(100% - 180px);
+    height: 150px;
+    background-color: gray;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    overflow-x: scroll;
+    position: relative;
+    display: flex;
+    align-items: center; /* Vertically center the waveform */
+    justify-content: flex-start;
+}
+
+.wavData::-webkit-scrollbar{
+    background-color: #464647;
+    border-bottom-right-radius: 10px;
+}
+
+.wavData::-webkit-scrollbar-thumb{
+    background-color: #D87A33;
+    border-radius: 10px;
+}
+
+.wavData canvas {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%); /* Center the canvas vertically */
+    height: 100%;
+    padding-top: 25px; /* Add padding at the top for time markers */
+}
+
+/* Playhead styling */
+.playhead {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background-color: white;
+    z-index: 10;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.volume-slider {
+    width: 100px;
+    height: 5px;
+    background-color: black;
+    outline: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 5px;
+    padding: 0;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    margin-top: -3.5px;
+    box-shadow: none;
+    border: none;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    border: none;
+    box-shadow: none;
+}
+
+.volume-slider::-webkit-slider-runnable-track {
+    background: black;
+    height: 5px;
+    border-radius: 5px;
+}
+
+.volume-slider::-moz-range-track {
+    background: black;
+    height: 5px;
+    border-radius: 5px;
+}
+
+/* Master volume slider styling */
+.master-volume {
+    width: 100px;
+    height: 5px;
+    background-color: black;
+    outline: none;
+    border-radius: 5px;
+    margin: 0 5px;
+    padding: 0;
+    display: flex;
+    align-self: center;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.master-volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    margin-top: -3.5px;
+    box-shadow: none;
+    border: none;
+}
+
+.master-volume::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    border: none;
+    box-shadow: none;
+}
+
+.master-volume::-webkit-slider-runnable-track {
+    background: black;
+    height: 5px;
+    border-radius: 5px;
+}
+
+.master-volume::-moz-range-track {
+    background: black;
+    height: 5px;
+    border-radius: 5px;
+}
+
+@font-face {
+    font-family: 'Digital7Mono';
+    src: url('./fonts/digital-7-mono.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+.timer input{
+    font-family: 'Digital7Mono', monospace;
+    font-style: mono;
+    color: white;
+}
+
+.cycle{
+    border-left: 5px solid #2A5A8B;
+}
+
+.non-cycle{
+    border-left: 5px solid #D87A33;
+}
+
+.statusBar{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 20px;
+    background-color: #464647;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    justify-content: space-around;
+    display: flex;
+}
+
+.progress-container{
+    width: 100%;
+    height: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    margin: 40px 10px;
+    overflow: hidden;
+}
+
+.progress-bar{
+    width: 0px;
+    height: 100%;
+    background-color: #D87A33;
+    transition: width 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-text{
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+}
+
+.loadingOverlay{
+    position :fixed;
+    top :0;
+    left :0;
+    width :100vw;
+    height :100vh;
+    background-Color :rgba(0, 0, 0, 0.7);
+    display :flex;
+    flex-Direction :column;
+    justify-Content :center;
+    align-Items :center;
+    z-Index :9999;
+    color :white;
+    font-Size :24px;
+    font-Family :Arial, sans-serif;
+}
+
+
+/* Removed screen size restriction for testing */
+@media screen and (max-width: 1120px) {
+    /* Styles for smaller screens */
+    .container, .statusBar, .loadingOverlay{
+        display: none;
+    }
+
+    html::before{
+        content: "Current screen size is not supported.";
+        color: black;
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        font-size: 40px;
+    }
+}

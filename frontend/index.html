@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/global.css">
+    <link rel="stylesheet" href="./src/index.css">
+    <link rel="stylesheet" href="./src/modal.css">
+    <link rel="stylesheet" href="./src/about-modal.css">
+    <link rel="stylesheet" href="./src/audio-browser-modal.css">
+    <link rel="stylesheet" href="./src/channelRack.css">
+    <script src="./src/global.js"></script>
+    <script src="./src/modal.js"></script>
+    <script src="./src/audio-browser.js"></script>
+    <script src="./src/index.js"></script>
+    <script src="./src/channelRack.js"></script>
+    <script src="https://kit.fontawesome.com/981bb78518.js" crossorigin="anonymous"></script>
+    <title>Music Studio</title>
+</head>
+<body>
+    <div class="container">
+        <div class="optionBar">
+            <ul>
+                <li data-file>
+                    <p>檔案File</p>
+                    <ul class="dropdown">
+                        <li><p data-newFile>新建檔案 New File</p></li>
+                        <li><p data-saveFile>儲存檔案 Save File</p></li>
+                        <li><p data-importFile>匯入檔案 Import</p></li>
+                        <li><p data-exportFile>匯出檔案 Export</p></li>
+                    </ul>
+                </li>
+                <li data-edit>
+                    <p>編輯Edit</p>
+                    <ul class="dropdown">
+                        <li><p data-newTrack>新增音軌 Add Track</p></li>
+                        <li><p data-newCycleTrack>新增循環音軌 Add Cycle Track</p></li>
+                        <li><p data-cutTrack>剪下音軌 Cut Track</p></li>
+                        <li><p data-copyTrack>拷貝音軌 Copy Track</p></li>
+                        <li><p data-pasteTrack>貼上音軌 Paste Track</p></li>
+                        <li><p data-importYouTubeAudio>匯入YouTube音訊 Import YouTube Audio</p></li>
+                    </ul>
+                </li>
+                <li data-settings>
+                    <p>設定Settings</p>
+                    <ul class="dropdown">
+                        <li><p data-audioSettings>音訊設定 Audio Settings</p></li>
+                        <li><p data-displaySettings>顯示設定 Display Settings</p></li>
+                    </ul>
+                </li>
+                <li data-preferences>
+                    <p>偏好Preferences</p>
+                    <ul class="dropdown">
+                        <li><p data-keyboardShortcuts>鍵盤快捷鍵 Keyboard Shortcuts</p></li>
+                        <li><p data-language>語言 Language</p></li>
+                    </ul>
+                </li>
+                <li data-information>
+                    <p>說明Information</p>
+                    <ul class="dropdown">
+                        <li><p data-sponsor>贊助作者 Mega Support</p></li>
+                        <li><p data-about>關於網頁 About</p></li>
+                        <li><p>前端版本：2.3.1</p></li>
+                        <li><p>後端版本：2.1.1</p></li>
+                    </ul>
+                </li>
+            </ul>
+            <input type="text" id="fileTitle" value="*Untitled未命名的作品" style="color: white;"></input>
+            <p id="serverStatus">後端服務未連接｜Backend Service Disconnected</p>
+        </div>
+        <div class="editor">
+            <div class="desk">
+                <div class="control panel">
+                    <button class="button" title="回到開始 Back to Start"><i class="fa-solid fa-backward-step"></i></button>
+                    <button class="button" title="播放 Play"><i class="fa-solid fa-play"></i></button>
+                    <button class="button" hidden title="暫停 Pause"><i class="fa-solid fa-pause"></i></button>
+                    <button class="button" title="停止 Stop"><i class="fa-solid fa-stop"></i></button>
+                    <button class="button" title="前進到結束 Forward to End"><i class="fa-solid fa-forward-step"></i></button>
+                </div>
+                <div class="timer panel">
+                    <input type="text" value="0:00.000" title="目前時間 Current Time">
+                </div>
+                <div class="toolBox panel">
+                    <button class="button focus" title="選擇工具 Selection Tool"><i class="fa-solid fa-arrow-pointer"></i></button>
+                    <button class="button" title="移動工具 Hand Tool"><i class="fa-solid fa-hand"></i></button>
+                    <button class="button" title="剪刀工具 Scissors Tool"><i class="fa-solid fa-scissors"></i></button>
+                    <button class="button" title="縮放工具 Zoom Tool"><i class="fa-solid fa-expand"></i></button>
+                </div>
+                <div class="master panel">
+                    <button class="button" title="主音量 Master Volume"><i class="fa-solid fa-volume-high"></i></button>
+                    <input type="range" min="0" max="100" value="50" class="master-volume" title="調整主音量 Adjust Master Volume">
+                </div>
+            </div>
+            <div class="trackZone">
+                <div class="track active" data-is-cycle-track="false">
+                    <div class="icon">
+                        <input type="text" value="Track 1">
+                        <button class="deleteBtn" title="刪除音軌 Delete Track"><i class="fa-solid fa-trash"></i></button>
+                        <div class="volume-control">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <input type="range" min="0" max="100" value="80" class="volume-slider" title="調整音軌音量 Adjust Track Volume">
+                        </div>
+                    </div>
+                    <div class="wavData non-cycle">
+                        <!-- Waveform will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="channelRack">
+            <button class="channelRackToggle"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="channelRackPanel">
+                <div class="punchPadZone">
+                    <div>
+                        <button class="" data-punchPad="snare"></button>
+                        <button class="" data-punchPad="clap"></button>
+                        <button class="" data-punchPad="kick"></button>
+                        <button class="" data-punchPad="hihat"></button>
+                    </div>
+                    <div>
+                        <button class="" data-punchPad="tom"></button>
+                        <button class="" data-punchPad="stick"></button>
+                        <button class="" data-punchPad="maracas"></button>
+                        <button class="" data-punchPad="cowbell"></button>
+                    </div>
+                </div>
+                <div class="rhythmMaker">
+                    <div class="rhythmRow" data-rhythmRow="clap">
+                        <select>
+                            <option value="clap">808 Snare</option>
+                            <option value="crash">808 Clap</option>
+                            <option value="hihat">808 Kick</option>
+                            <option value="kick">808 HiHat</option>
+                            <option value="tom">808 Tom</option>
+                            <option value="stick">808 Stick</option>
+                            <option value="maracas">808 Maracas</option>
+                            <option value="cowbell">808 Cowbell</option>
+                        </select>
+                        <div class="btnRack">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                        </div>
+                    </div>
+                    <div class="rhythmRow" data-rhythmRow="clap">
+                        <select>
+                            <option value="clap">808 Snare</option>
+                            <option value="crash">808 Clap</option>
+                            <option value="hihat">808 Kick</option>
+                            <option value="kick">808 HiHat</option>
+                            <option value="tom">808 Tom</option>
+                            <option value="stick">808 Stick</option>
+                            <option value="maracas">808 Maracas</option>
+                            <option value="cowbell">808 Cowbell</option>
+                        </select>
+                        <div class="btnRack">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                        </div>
+                    </div>
+                    <div class="rhythmRow" data-rhythmRow="clap">
+                        <select>
+                            <option value="clap">808 Snare</option>
+                            <option value="crash">808 Clap</option>
+                            <option value="hihat">808 Kick</option>
+                            <option value="kick">808 HiHat</option>
+                            <option value="tom">808 Tom</option>
+                            <option value="stick">808 Stick</option>
+                            <option value="maracas">808 Maracas</option>
+                            <option value="cowbell">808 Cowbell</option>
+                        </select>
+                        <div class="btnRack">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                        </div>
+                    </div>
+                    <div class="rhythmRow" data-rhythmRow="clap">
+                        <select>
+                            <option value="clap">808 Snare</option>
+                            <option value="crash">808 Clap</option>
+                            <option value="hihat">808 Kick</option>
+                            <option value="kick">808 HiHat</option>
+                            <option value="tom">808 Tom</option>
+                            <option value="stick">808 Stick</option>
+                            <option value="maracas">808 Maracas</option>
+                            <option value="cowbell">808 Cowbell</option>
+                        </select>
+                        <div class="btnRack">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                        </div>
+                    </div>
+                </div>
+                <div class="bpmController">
+                    <p>BPM</p>
+                    <button id="bpmPlus10">+10</button>
+                    <button id="bpmPlus1">+1</button>
+                    <input type="number" step="0.1" min="1" value="50" id="bpm">
+                    <button id="bpmMinus1">-1</button>
+                    <button id="bpmMinus10">-10</button>
+                </div>
+            </div>
+        </div>
+        <div class="mixer">
+            <div class="mixerPanel">
+                <button class="mixerToggle"><i class="fa-solid fa-chevron-right"></i></button>
+                
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal dialogs -->
+    <div id="aboutModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>關於 Music Studio</h2>
+            <h3>網站設計</h3>
+            <p>使用語言｜原生HTML/CSS/JavaScript + Node.js</p>
+            <p>網頁架構｜前端（Frontend）、後端（Backend）</p>
+            <p>使用串接｜yt-dlp</p>
+            <p>主題顏色｜
+                <table>
+                    <tbody>
+                        <th style="background-color: #8B0202; width: 20px; height: 20px;" id="firstTh"></th>
+                            <th>
+                                <p>#8B0202</p>
+                            </th>
+                            <th>
+                                <p>元件色調</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #D87A33; width: 20px; height: 20px;" id="firstTh"></th>
+                            <th>
+                                <p>#D87A33</p>
+                            </th>
+                            <th>
+                                <p>元件色調</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #2A5A8B; width: 20px; height: 20px;" id="firstTh"></th>
+                            <th>
+                                <p>#2A5A8B</p>
+                            </th>
+                            <th>
+                                <p>元件色調</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #ffffff; width: 20px; height: 20px;" id="firstTh"></th>
+                            <th>
+                                <p>#FFFFFF</p>
+                            </th>
+                            <th>
+                                <p>一般字體</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #EDEDED; width: 20px; height: 20px;"  id="firstTh"></th>
+                            <th>
+                                <p>#EDEDED</p>
+                            </th>
+                            <th>
+                                <p>背景色</p>
+                            </th>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <th style="background-color: #808080; width: 20px; height: 20px;" id="firstTh"></th>
+                            <th>
+                                <p>#808080</p>
+                            </th>
+                            <th>
+                                <p>次要色調</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #464647; width: 20px; height: 20px;" id="firstTh"></th>
+                            <th>
+                                <p>#464647</p>
+                            </th>
+                            <th>
+                                <p>次要色調</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #1A1A1A; width: 20px; height: 20px;" id="firstTh"></th>
+                            <th>
+                                <p>#1A1A1A</p>
+                            </th>
+                            <th>
+                                <p>背景色</p>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </p>
+            <h3>報告分工</h3>
+            <p>網頁主要製作｜電機二 黃峻偉</p>
+            <p>簡報主要製作｜電機二 江晉毅</p>
+            <p>報告主要助攻｜OpenAI ChatGPT、Anthropic Claude</p>
+            <h3>特別設計</h3>
+            <p>特別設計-1｜輸入網址後自動下載音檔並轉為.wav</p>
+            <p>特別設計-2｜檢查後端狀態的指示燈</p>
+            <p>特別設計-3｜名稱從p tag改成input tag方便使用者隨時更改名稱</p>
+            <p>特別設計-4｜頂端header模仿電腦的交互，hover後展開副選單</p>
+            <p>特別設計-5｜下載音檔後存在後端伺服器，有需要可以直接點開選單加入</p>
+            <p>特別設計-6｜加入後自動將音檔轉為waveform可視化波形圖</p>
+            <p>特別設計-7｜可以下載檔案後存在電腦</p>
+            <p>特別設計-8｜每個音軌可以獨立控制音量，也有master volume控制總音量</p>
+        </div>
+    </div>
+    
+    <div id="keyboardShortcutsModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>鍵盤快捷鍵 Keyboard Shortcuts</h2>
+            <table>
+                <tr>
+                    <td>Space</td>
+                    <td>播放/暫停 Play/Pause</td>
+                </tr>
+                <tr>
+                    <td>Ctrl+S</td>
+                    <td>儲存專案 Save Project</td>
+                </tr>
+                <tr>
+                    <td>Ctrl+Z</td>
+                    <td>復原 Undo</td>
+                </tr>
+                <tr>
+                    <td>Ctrl+Y</td>
+                    <td>重做 Redo</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="statusBar">
+        <p class="downloadStatus">
+            <p class="downloadStatusText progress-text">下載佇列目前為空｜Queue is empty</p>
+            <div class="progress-bar"></div>
+        </p>
+    </div>
+</body>
+</html>
