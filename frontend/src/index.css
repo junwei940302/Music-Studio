@@ -86,6 +86,7 @@
     font-size: 15px;
     display: flex;
     align-items: center;
+    text-align: center;
 }
 
 .editor{
@@ -496,9 +497,8 @@
     font-Family :Arial, sans-serif;
 }
 
-
 /* Removed screen size restriction for testing */
-@media screen and (max-width: 1120px) {
+@media screen and (max-width: 632px) {
     /* Styles for smaller screens */
     .container, .statusBar, .loadingOverlay{
         display: none;
@@ -512,6 +512,24 @@
         align-items: center;
         justify-content: center;
         display: flex;
-        font-size: 40px;
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+    /* Styles for smaller screens */
+    #serverStatus{
+        display: none;
+    }
+
+    .toolBox, .master{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 719px) {
+    /* Styles for smaller screens */
+    .optionBar ul li p, #fileTitle{
+        font-size: 13px;
     }
 }

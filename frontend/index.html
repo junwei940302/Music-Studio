@@ -111,26 +111,132 @@
             <button class="channelRackToggle"><i class="fa-solid fa-chevron-left"></i></button>
             <div class="channelRackPanel">
                 <div class="punchPadZone">
-                    <div>
-                        <button class="" data-punchPad="snare"></button>
-                        <button class="" data-punchPad="clap"></button>
-                        <button class="" data-punchPad="kick"></button>
-                        <button class="" data-punchPad="hihat"></button>
+                    <div class="customMenu" style="display: none;">
+                        <div class="menuOption" data-instruments='hihats'>
+                            <p>HiHats</p>
+                        </div>
+                        <div class="menuOption" data-instruments='openhihats'>
+                            <p>OpenHiHats</p>
+                        </div>
+                        <div class="menuOption" data-instruments='rides'>
+                            <p>Rides</p>
+                        </div>
+                        <div class="menuOption" data-instruments='kicks'>
+                            <p>Kicks</p>
+                        </div>
+                        <div class="menuOption" data-instruments='claves'>
+                            <p>Claves</p>
+                        </div>
+                        <div class="menuOption" data-instruments='congas'>
+                            <p>Congas</p>
+                        </div>
+                        <div class="menuOption" data-instruments='cowbells'>
+                            <p>Cowbells</p>
+                        </div>
+                        <div class="menuOption" data-instruments='maracas'>
+                            <p>Maracas</p>
+                        </div>
+                        <div class="menuOption" data-instruments='sticks'>
+                            <p>Sticks</p>
+                        </div>
+                        <div class="menuOption" data-instruments='toms'>
+                            <p>Toms</p>
+                        </div>
+                        <div class="menuOption" data-instruments='claps'>
+                            <p>Claps</p>
+                        </div>
+                        <div class="menuOption" data-instruments='rims'>
+                            <p>Rims</p>
+                        </div>
+                        <div class="menuOption" data-instruments='snares'>
+                            <p>Snares</p>
+                        </div>
+                    </div>
+                    <div class="customMenuSecond" style="display: none;">
+                        <div class="menuSecondOption">
+                            
+                        </div>
                     </div>
                     <div>
-                        <button class="" data-punchPad="tom"></button>
-                        <button class="" data-punchPad="stick"></button>
-                        <button class="" data-punchPad="maracas"></button>
-                        <button class="" data-punchPad="cowbell"></button>
+                        <button data-punchpad="1"></button>
+                        <button data-punchpad="2"></button>
+                        <button data-punchpad="3"></button>
+                        <button data-punchpad="4"></button>
+                    </div>
+                    <div>
+                        <button data-punchpad="5"></button>
+                        <button data-punchpad="6"></button>
+                        <button data-punchpad="7"></button>
+                        <button data-punchpad="8"></button>
                     </div>
                 </div>
                 <div class="rhythmMaker">
-                    <div class="rhythmRow" data-rhythmRow="clap">
+                    <div class="rhythmRow">
                         <select>
-                            <option value="clap">808 Snare</option>
-                            <option value="crash">808 Clap</option>
-                            <option value="hihat">808 Kick</option>
-                            <option value="kick">808 HiHat</option>
+                            <option value="snare">808 Snare</option>
+                            <option value="clap">808 Clap</option>
+                            <option value="kick" selected="selected">808 Kick</option>
+                            <option value="hihat">808 HiHat</option>
+                            <option value="tom">808 Tom</option>
+                            <option value="stick">808 Stick</option>
+                            <option value="maracas">808 Maracas</option>
+                            <option value="cowbell">808 Cowbell</option>
+                        </select>
+                        <div class="btnRack">
+                            <input type="checkbox" checked>
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox" checked>
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox" checked>
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox" checked>
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                        </div>
+                    </div>
+                    <div class="rhythmRow">
+                        <select>
+                            <option value="snare">808 Snare</option>
+                            <option value="clap">808 Clap</option>
+                            <option value="kick">808 Kick</option>
+                            <option value="hihat" selected="selected">808 HiHat</option>
+                            <option value="tom">808 Tom</option>
+                            <option value="stick">808 Stick</option>
+                            <option value="maracas">808 Maracas</option>
+                            <option value="cowbell">808 Cowbell</option>
+                        </select>
+                        <div class="btnRack">
+                            <input type="checkbox">
+                            <input type="checkbox" checked>
+                            <input type="checkbox">
+                            <input type="checkbox" checked>
+                            <input type="checkbox">
+                            <input type="checkbox" checked>
+                            <input type="checkbox">
+                            <input type="checkbox" checked>
+                            <input type="checkbox">
+                            <input type="checkbox" checked>
+                            <input type="checkbox">
+                            <input type="checkbox" checked>
+                            <input type="checkbox">
+                            <input type="checkbox" checked>
+                            <input type="checkbox">
+                            <input type="checkbox" checked>
+                        </div>
+                    </div>
+                    <div class="rhythmRow">
+                        <select>
+                            <option value="snare" selected="selected">808 Snare</option>
+                            <option value="clap">808 Clap</option>
+                            <option value="kick">808 Kick</option>
+                            <option value="hihat">808 HiHat</option>
                             <option value="tom">808 Tom</option>
                             <option value="stick">808 Stick</option>
                             <option value="maracas">808 Maracas</option>
@@ -139,89 +245,29 @@
                         <div class="btnRack">
                             <input type="checkbox">
                             <input type="checkbox">
+                            <input type="checkbox" checked>
                             <input type="checkbox">
                             <input type="checkbox">
                             <input type="checkbox">
+                            <input type="checkbox" checked>
                             <input type="checkbox">
                             <input type="checkbox">
                             <input type="checkbox">
+                            <input type="checkbox" checked>
                             <input type="checkbox">
                             <input type="checkbox">
                             <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                        </div>
-                    </div>
-                    <div class="rhythmRow" data-rhythmRow="clap">
-                        <select>
-                            <option value="clap">808 Snare</option>
-                            <option value="crash">808 Clap</option>
-                            <option value="hihat">808 Kick</option>
-                            <option value="kick">808 HiHat</option>
-                            <option value="tom">808 Tom</option>
-                            <option value="stick">808 Stick</option>
-                            <option value="maracas">808 Maracas</option>
-                            <option value="cowbell">808 Cowbell</option>
-                        </select>
-                        <div class="btnRack">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
+                            <input type="checkbox" checked>
                             <input type="checkbox">
                         </div>
                     </div>
-                    <div class="rhythmRow" data-rhythmRow="clap">
+                    <div class="rhythmRow">
                         <select>
-                            <option value="clap">808 Snare</option>
-                            <option value="crash">808 Clap</option>
-                            <option value="hihat">808 Kick</option>
-                            <option value="kick">808 HiHat</option>
-                            <option value="tom">808 Tom</option>
-                            <option value="stick">808 Stick</option>
-                            <option value="maracas">808 Maracas</option>
-                            <option value="cowbell">808 Cowbell</option>
-                        </select>
-                        <div class="btnRack">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                            <input type="checkbox">
-                        </div>
-                    </div>
-                    <div class="rhythmRow" data-rhythmRow="clap">
-                        <select>
-                            <option value="clap">808 Snare</option>
-                            <option value="crash">808 Clap</option>
-                            <option value="hihat">808 Kick</option>
-                            <option value="kick">808 HiHat</option>
-                            <option value="tom">808 Tom</option>
+                            <option value="snare">808 Snare</option>
+                            <option value="clap">808 Clap</option>
+                            <option value="kick">808 Kick</option>
+                            <option value="hihat">808 HiHat</option>
+                            <option value="tom" selected="selected">808 Tom</option>
                             <option value="stick">808 Stick</option>
                             <option value="maracas">808 Maracas</option>
                             <option value="cowbell">808 Cowbell</option>

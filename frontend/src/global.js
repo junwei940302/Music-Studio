@@ -10,7 +10,7 @@ let masterVolume = 0.5; // Default master volume (0-1)
 let masterGainNode = null; // Master gain node for global volume control
 
 // Initialize audio context
-function initAudioContext() {
+async function initAudioContext() {
     try {
         window.AudioContext = window.AudioContext || window.webkitAudioContext;
         audioContext = new AudioContext();
@@ -86,8 +86,23 @@ async function loadAudioFile(url) {
     try {
         const response = await fetch(url);
         const arrayBuffer = await response.arrayBuffer();
-        const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-        return audioBuffer;
+        
+        // 使用 Web Worker 处理音频解码
+        const worker = new Worker('./src/audio-worker.js');
+        
+        return new Promise((resolve, reject) => {
+            worker.postMessage({ arrayBuffer }, [arrayBuffer]);
+            
+            worker.onmessage = async (e) => {
+                if (e.data.error) {
+                    reject(e.data.error);
+                } else {
+                    const audioBuffer = await audioContext.decodeAudioData(e.data.arrayBuffer);
+                    resolve(audioBuffer);
+                }
+                worker.terminate();
+            };
+        });
     } catch (error) {
         console.error('Error loading audio file:', error);
         return null;
