@@ -47,7 +47,7 @@ app.post('/convert', async (req, res) => {
     jobs[jobId] = { progress: 0, status: 'downloading' };
 
     // 1. 先取得 YouTube 標題
-    const getTitleCmd = `./yt-dlp --get-title "${url}"`;
+    const getTitleCmd = `./yt-dlp --cookies-from-browser chrome --get-title "${url}"`;
     console.log("[yt-dlp] Processing URL: "+url);
     exec(getTitleCmd, (titleErr, titleStdout, titleStderr) => {
         if (titleErr) {
