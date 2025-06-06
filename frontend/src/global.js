@@ -87,22 +87,9 @@ async function loadAudioFile(url) {
         const response = await fetch(url);
         const arrayBuffer = await response.arrayBuffer();
         
-        // 使用 Web Worker 处理音频解码
-        const worker = new Worker('./src/audio-worker.js');
-        
-        return new Promise((resolve, reject) => {
-            worker.postMessage({ arrayBuffer }, [arrayBuffer]);
-            
-            worker.onmessage = async (e) => {
-                if (e.data.error) {
-                    reject(e.data.error);
-                } else {
-                    const audioBuffer = await audioContext.decodeAudioData(e.data.arrayBuffer);
-                    resolve(audioBuffer);
-                }
-                worker.terminate();
-            };
-        });
+        // Directly decode audio data without using Web Worker
+        const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+        return audioBuffer;
     } catch (error) {
         console.error('Error loading audio file:', error);
         return null;

@@ -75,11 +75,12 @@ document.addEventListener("DOMContentLoaded", () =>{
             audio.src = audioRealArr[type];
 
             const source = audioContext.createMediaElementSource(audio);
-
-                            const gainNode = audioContext.createGain();
-                            gainNode.gain.value = 15.0; // Increased preview volume
-                            source.connect(gainNode);
-            source.connect(audioContext.destination);
+            const gainNode = audioContext.createGain();
+            gainNode.gain.value = 20.0; // Increased preview volume
+            
+            // Only connect through the gain node
+            source.connect(gainNode);
+            gainNode.connect(channelRackMasterGain); // Connect to master gain node instead of destination
             
             audio.play();
             
@@ -140,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () =>{
                             const gainNode = audioContext.createGain();
                             gainNode.gain.value = 15.0; // Increased preview volume
                             source.connect(gainNode);
-                            source.connect(audioContext.destination);
+                            source.connect(channelRackMasterGain);
                             audio.play();
                             customMenuSecond.style.display = 'none';
                         });
