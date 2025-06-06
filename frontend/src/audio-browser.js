@@ -132,7 +132,7 @@ async function loadAudioFiles() {
     fileList.innerHTML = '<p style="text-align: center;">載入中... Loading...</p>';
     
     try {
-        const response = await fetch('http://localhost:3000/audio-files');
+        const response = await fetch('https://music-studio-znn4.onrender.com/audio-files');
         const data = await response.json();
         
         if (data.success && data.files && data.files.length > 0) {
@@ -238,7 +238,7 @@ function previewAudioFile(file) {
     }
     
     // Create new audio element
-    previewAudio = new Audio(`http://localhost:3000${file.url}`);
+    previewAudio = new Audio(`https://music-studio-znn4.onrender.com${file.url}`);
     previewAudio.play();
 }
 
@@ -271,7 +271,7 @@ async function selectAudioFile(file) {
         
         // Load audio and create waveform
         if (audioContext) {
-            const audioBuffer = await loadAudioFile(`http://localhost:3000${file.url}`);
+            const audioBuffer = await loadAudioFile(`https://music-studio-znn4.onrender.com${file.url}`);
             if (audioBuffer) {
                 wavData.innerHTML = '';
                 

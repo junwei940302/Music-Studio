@@ -39,7 +39,7 @@ function formatTime(seconds) {
 async function checkServerConnection() {
     const serverStatus = document.getElementById('serverStatus');
     try {
-        const response = await fetch('http://localhost:3000/health', { 
+        const response = await fetch('https://music-studio-znn4.onrender.com/health', { 
             method: 'GET'
         });
         
@@ -51,7 +51,7 @@ async function checkServerConnection() {
             // Set up periodic status check
             setInterval(async () => {
                 try {
-                    const checkResponse = await fetch('http://localhost:3000/health', { 
+                    const checkResponse = await fetch('https://music-studio-znn4.onrender.com/health', { 
                         method: 'GET'
                     });
                     

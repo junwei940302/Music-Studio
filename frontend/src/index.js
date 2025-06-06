@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check server connection with timeout
     const checkServer = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:3000/health', {
+            const response = await fetch('https://music-studio-znn4.onrender.com/health', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // If there's audio data, load it and create waveform
             if (window.trackClipboard.audioUrl && audioContext) {
-                loadAudioFile(`http://127.0.0.1:3000${window.trackClipboard.audioUrl}`).then(audioBuffer => {
+                loadAudioFile(`https://music-studio-znn4.onrender.com${window.trackClipboard.audioUrl}`).then(audioBuffer => {
                     if (audioBuffer) {
                         const wavData = newTrack.querySelector('.wavData');
                         wavData.innerHTML = '';
@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 500);
             
             // Make the API call
-            const res = await fetch('http://127.0.0.1:3000/convert', {
+            const res = await fetch('https://music-studio-znn4.onrender.com/convert', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ url })
